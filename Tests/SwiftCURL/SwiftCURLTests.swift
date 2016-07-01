@@ -14,11 +14,11 @@ class SwiftCURLTests: XCTestCase {
             try curl.setOption(option: CURLOPT_USERNAME, "314099323@qq.com")
             try curl.setOption(option: CURLOPT_PASSWORD, "1111111111")
             try curl.setOption(option: CURLOPT_MAIL_FROM, "<314099323@qq.com>")
-            try curl.setOption(option: CURLOPT_MAIL_RCPT, ["<314099323@qq.com>", "<jeffreyzeng@me.com>"])
+            try curl.setOption(option: CURLOPT_MAIL_RCPT, ["<jjjjjeffreyzeng@gmail.com>", "<jeffreyzeng@me.com>"])
             
             
-            let content = "Date: Mon, 29 Nov 2010 21:54:29 +1100\r\n"+"To: \"ME\" <314099323@qq.com>\r\n"+"From: \"ME\" <314099323@qq.com>\r\n"+"Cc: \"ME\" <jeffreyzeng@me.com>\r\n"+"Message-ID: <dcd7cb36-11db-487a-9f3a-e652a9458efd@rfcpedant.example.org>\r\n"+"Subject: SMTP SSL example message\r\n"+"\r\n"+"The body of the message starts here.\r\n"+"\r\n"+"It could be a lot of lines, could be MIME encoded, whatever.\r\n"+"Check RFC5322.\r\n"
-            let payloadStorage = cURL.ReadFunctionStorage(data: content.data(using: .ascii)!)
+            let content = "Date: Mon, 29 Nov 2010 21:54:29 +1100\r\n"+"To: \"JJJJJeffrey\" <jjjjjeffreyzeng@gmail.com>\r\n"+"From: \"ME\" <314099323@qq.com>\r\n"+"Cc: \"ME\" <jeffreyzeng@me.com>\r\n"+"Message-ID: <dcd7cb36-11db-487a-9f3a-e652a9458efd@rfcpedant.example.org>\r\n"+"Subject: SMTP SSL example message\r\n"+"\r\n"+"The body of the message starts here.\r\n"+"\r\n"+"It could be a lot of lines, could be MIME encoded, whatever.\r\n"+"Check RFC5322.中文测试\r\n"
+            let payloadStorage = cURL.ReadFunctionStorage(data: content.data(using: .utf8)!)
             try curl.setOption(option: CURLOPT_READFUNCTION, curlReadFunction)
             try curl.setOption(option: CURLOPT_READDATA, payloadStorage)
             

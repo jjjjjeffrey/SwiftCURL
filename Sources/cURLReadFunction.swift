@@ -42,9 +42,11 @@ public func curlReadFunction(pointer: UnsafeMutablePointer<Int8>?, size: Int, nm
     
     let byte = data[currentIndex]
     
-    let char = CChar(byte)
+    let char = UInt8(byte)
     
-    pointer?.pointee = char
+    let ptr = unsafeBitCast(pointer, to: UnsafeMutablePointer<UInt8>.self)
+    
+    ptr.pointee = char
     
     storage.currentIndex += 1
     

@@ -32,6 +32,7 @@ public extension cURL {
         case BadFunctionArgument = 45
         
         case Unknown1 = 56
+        case Unknown2 = 67
         
         public var description: String {
             
